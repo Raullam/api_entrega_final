@@ -1,9 +1,9 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../config/db') // Asegúrate de ajustar la ruta según la ubicación de tu archivo db.js
-const bcrypt = require('bcryptjs') // 🛠️ Usa bcryptjs en lugar de bcrypt normal
+const db = require('../config/db') 
+const bcrypt = require('bcryptjs') 
 const jwt = require('jsonwebtoken')
-const auth = require('../middleware/auth') // Importamos el middleware correctamente
+const auth = require('../middleware/auth') // Importamos el middleware 
 
 require('dotenv').config()
 
