@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../config/db') // Asegúrate de ajustar la ruta según la ubicación de tu archivo db.js
+const db = require('../config/db')
 
 /**
  * @swagger
