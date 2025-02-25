@@ -5,14 +5,14 @@ Aquest projecte consisteix en el desenvolupament d'una API RESTful per a la gest
 ## 🌟 **Tecnologies Utilitzades 🛠️**
 ---
 
-- **Node.js**: Entorn d'execució per a JavaScript al servidor.
-- **Express**: Framework per a la creació de servidors web i APIs RESTful.
-- **MySQL (mysql2)**: Connector per interactuar amb la base de dades MySQL de manera eficient.
-- **Swagger (swagger-jsdoc i swagger-ui-express)**: Eines per a la generació i visualització de la documentació de l'API.
-- **dotenv**: Biblioteca per a la gestió de variables d’entorn.
-- **CORS**: Middleware per habilitar l'accés des de diferents dominis.
-- **body-parser**: Middleware per parsejar cossos de sol·licituds en format JSON.
-- **bcrypt i bcryptjs**: Llibreries per al xifrat segur de contrasenyes.
+- Node.js**: Entorn d'execució per a JavaScript al servidor.
+- Express**: Framework per a la creació de servidors web i APIs RESTful.
+- MySQL (mysql2)**: Connector per interactuar amb la base de dades MySQL de manera eficient.
+- Swagger (swagger-jsdoc i swagger-ui-express)**: Eines per a la generació i visualització de la documentació de l'API.
+- dotenv**: Biblioteca per a la gestió de variables d’entorn.
+- CORS**: Middleware per habilitar l'accés des de diferents dominis.
+- body-parser**: Middleware per parsejar cossos de sol·licituds en format JSON.
+- bcrypt i bcryptjs**: Llibreries per al xifrat segur de contrasenyes.
 ---
 
 ## Estructura del Projecte 📂
@@ -72,13 +72,14 @@ npm install
 Configuració de l'Entorn 🌐
 Crea un fitxer .env al directori arrel del projecte amb les següents variables (ajusta-les segons la teva configuració):
 
-DB_HOST=localhost
-DB_USER=el_teu_usuari
-DB_PASSWORD=la_teva_contrasenya
-DB_NAME=el_teu_nom_de_base_de_dades
-JWT_SECRET=una_clau_secreta_per_al_JWT
-PORT=3000
-
+```bash
+- **DB_HOST=localhost
+- **DB_USER=el_teu_usuari
+- **DB_PASSWORD=la_teva_contrasenya
+- **DB_NAME=el_teu_nom_de_base_de_dades
+- **JWT_SECRET=una_clau_secreta_per_al_JWT
+- **PORT=3000
+```
 Aquestes variables són necessàries per connectar-se a MySQL i generar el JWT per a l'autenticació.
 Assegura't que la base de dades MySQL tingui les taules necessàries (per exemple, items, usuaris, etc.) creades i configurades segons l'estructura que espera el codi.
 
@@ -87,8 +88,10 @@ Per iniciar la API i tenir els endpoints disponibles:
 
 Executa el següent comandament al directori del projecte:
 
-node app.js
+```bash
 
+node app.js
+```
 Això posarà en marxa el servidor, per defecte al port 3000 (o el que hagis definit a .env).
 Quan el servidor estigui en funcionament, veuràs un missatge a la consola com ara Servidor corrent al port 3000.
 
@@ -96,6 +99,9 @@ Prova dels Endpoints 🛠️
 
 Utilitza una eina com Postman per testar els endpoints:
 
-POST http://localhost:3000/login: Envia un cos JSON amb les credencials (per exemple, {"username": "usuari", "password": "contrasenya"}) per obtenir un JWT.
-POST http://localhost:3000/items/items_usuaris: Inclou el JWT al capçalera Authorization (com Bearer <token>) i un cos JSON amb els detalls de la compra.
-GET http://localhost:3000/items: Llista els ítems disponibles (pot requerir autenticació segons la implementació).
+- GET http://localhost:3000/usuaris: Llista tots els usuaris.
+- GET http://localhost:3000/usuaris/:id: Obté un usuari per ID.
+- POST http://localhost:3000/usuaris: Crea un nou usuari. Retorna un token JWT al crear l'usuari i la contrasenya es desa de forma encriptada.
+- GET http://localhost:3000/plantas/usuaris/:id: Llista les plantes d'un usuari específic.
+- POST http://localhost:3000/items/items_usuaris: Inclou el JWT al capçalera Authorization (com Bearer <token>) i un cos JSON amb els detalls de la compra.
+- GET http://localhost:3000/items: Llista els ítems disponibles (pot requerir autenticació segons la implementació).
