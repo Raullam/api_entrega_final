@@ -1,8 +1,8 @@
 const express = require('express')
 const router = express.Router()
-const db = require('../config/db') // Asegúrate de ajustar la ruta según la ubicación de tu archivo db.js
-const bcrypt = require('bcryptjs') // Usa bcryptjs para comparar la contraseña
-const jwt = require('jsonwebtoken') // Importamos jwt
+const db = require('../config/db') 
+const bcrypt = require('bcryptjs') 
+const jwt = require('jsonwebtoken') // Importam jwt
 require('dotenv').config()
 
 /**
