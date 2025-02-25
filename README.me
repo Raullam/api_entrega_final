@@ -1,122 +1,67 @@
-🌱 API RESTful per a la Gestió d'una Aplicació de Plantes
+# API RESTful per a la Gestió d'una Aplicació de Plantes 🌱
 
+Aquest projecte consisteix en el desenvolupament d'una API RESTful per a la gestió d'una aplicació relacionada amb plantes. L'API està desenvolupada amb Node.js i Express, utilitzant MySQL com a base de dades i Swagger per a la documentació automàtica.
 
-Mòdul: Programació Multimèdia i Dispositius Mòbils
+## Tecnologies Utilitzades 🛠️
 
-Curs: 2n C.F.G.S.
+- **Node.js**: Entorn d'execució per a JavaScript al servidor.
+- **Express**: Framework per a la creació de servidors web i APIs RESTful.
+- **MySQL (mysql2)**: Connector per interactuar amb la base de dades MySQL de manera eficient.
+- **Swagger (swagger-jsdoc i swagger-ui-express)**: Eines per a la generació i visualització de la documentació de l'API.
+- **dotenv**: Biblioteca per a la gestió de variables d’entorn.
+- **CORS**: Middleware per habilitar l'accés des de diferents dominis.
+- **body-parser**: Middleware per parsejar cossos de sol·licituds en format JSON.
+- **bcrypt i bcryptjs**: Llibreries per al xifrat segur de contrasenyes.
 
-Data: 24/02/2025
+## Estructura del Projecte 📂
 
-Alumne: Raül Lama Martorell
+El projecte s'organitza en els següents arxius i carpetes:
 
-Repositori: GitHub
+- **bd/**: Conté l'escript de la base de dades MySQL.
+- **config/**: Configuracions globals, com la connexió a la base de dades.
+- **middleware/**: Conté middlewares per a la seguretat, autenticació i validació.
+- **node_modules/**: Dependències instal·lades amb npm.
+- **routes/**: Defineix les rutes de l'API, separades per funcionalitats.
+- **.env**: Variables d’entorn, com credencials de la BD o claus JWT.
+- **app.js**: Punt d’execució de l’API.
+- **swagger.js**: Arxiu de configuració Swagger per a la documentació automàtica de l'API.
+- **package.json i package-lock.json**: Gestionen dependències i metadades del projecte.
+- **README.md**: Documentació del projecte.
 
-📝 Descripció del Projecte
-Aquesta API RESTful ha estat desenvolupada per gestionar una aplicació basada en un joc de plantes creat amb Flutter. Permet l'administració d'usuaris, plantes i ítems, amb l'objectiu de crear un backend funcional, segur i escalable.
+## Endpoints de l'API 🌐
 
-Les tecnologies principals utilitzades són:
+### Usuaris 👤
+- **GET** `/usuaris`: Llista tots els usuaris.
+- **GET** `/usuaris/:id`: Obté un usuari per ID.
+- **POST** `/usuaris`: Crea un nou usuari.
+- **PUT** `/usuaris/:id`: Actualitza un usuari existent.
+- **DELETE** `/usuaris/:id`: Elimina un usuari.
+- **GET** `/usuaris/correu/:correu`: Cerca un usuari per correu.
+- **PUT** `/usuaris/btc/:userId`: Actualitza el saldo BTC d'un usuari.
 
-Node.js i Express per al servidor.
-MySQL per a la base de dades.
-Swagger per a la documentació automàtica.
-El projecte segueix una arquitectura modular i implementa mecanismes de seguretat com autenticació amb JSON Web Tokens (JWT) i xifratge de contrasenyes amb bcrypt.
+### Plantes 🌿
+- **GET** `/plantas`: Llista totes les plantes.
+- **GET** `/plantas/usuaris/:id`: Llista les plantes d'un usuari específic.
+- **GET** `/plantas/:id`: Obté una planta per ID.
+- **POST** `/plantas`: Crea una nova planta.
+- **PUT** `/plantas/:id`: Actualitza una planta existent.
+- **DELETE** `/plantas/:id`: Elimina una planta.
 
-🎯 Objectius
-Objectiu General
-Dissenyar i implementar una API RESTful per a la gestió d'una aplicació de plantes, amb documentació clara i funcionalitats bàsiques operatives.
+### Items 🛒
+- **POST** `/items/items_usuaris`: Realitza una compra d'ítems, actualitzant el saldo BTC i assignant ítems a l'usuari.
+- **GET** `/items`: Llista tots els ítems.
 
-Objectius Específics
-🗄️ Configurar una base de dades MySQL amb taules per a usuaris, plantes i ítems.
-🌐 Desenvolupar endpoints RESTful amb Express per a operacions CRUD.
-📖 Documentar l'API amb Swagger, accessible a http://localhost:3000/api-docs/.
-🔒 Implementar seguretat amb JWT i xifratge de contrasenyes.
-🛠️ Tecnologies Utilitzades
-Tecnologia	Ús
-Node.js	Entorn d'execució del servidor
-Express	Framework per a l'API RESTful
-MySQL (mysql2)	Gestió de la base de dades
-Swagger	Documentació automàtica
-JWT	Autenticació amb tokens
-bcrypt	Xifratge de contrasenyes
-dotenv	Gestió de variables d'entorn
-📂 Estructura del Projecte
-text
-Wrap
-Copy
-├── bd/                # Scripts de la base de dades MySQL
-├── config/            # Configuracions (ex. connexió BD)
-├── middleware/        # Middlewares (autenticació, validació)
-├── routes/            # Rutes de l'API (usuaris, plantes, ítems)
-├── .env              # Variables d'entorn
-├── app.js            # Punt d'entrada de l'API
-├── swagger.js        # Configuració de Swagger
-├── package.json      # Dependències del projecte
-└── README.md         # Documentació del projecte
-🗃️ Base de Dades
-La base de dades (appplantes2) inclou les següents taules:
+### Autenticació 🔐
+- **POST** `/login`: Realitza el login i torna un JWT.
 
-usuaris: Informació dels usuaris (id, nom, correu, contrasenya, etc.).
-plantes: Dades de les plantes (id, usuari_id, nom, tipus, etc.).
-items: Informació dels ítems (id, nom, preu, etc.).
-items_usuaris: Relació entre usuaris i ítems comprats.
-🌐 Endpoints Principals
-Usuaris
-GET /usuaris - Llista tots els usuaris.
-POST /usuaris - Crea un nou usuari.
-PUT /usuaris/:id - Actualitza un usuari (ruta protegida amb JWT).
-Plantes
-GET /plantas - Llista totes les plantes.
-POST /plantas - Crea una nova planta.
-Ítems
-GET /items - Llista els ítems disponibles.
-POST /items/items_usuaris - Compra un ítem i actualitza el saldo.
-Autenticació
-POST /login - Inicia sessió i retorna un JWT.
-⚙️ Instal·lació i Configuració
-Requisits Previs
-✅ Node.js i npm instal·lats (node -v i npm -v per verificar).
-✅ Servidor MySQL configurat i en execució.
-Passos
-Clona el repositori:
-bash
-Wrap
-Copy
-git clone https://github.com/Raullam/API_Practica_final_PMM.git
-Instal·la les dependències:
-bash
-Wrap
-Copy
+## Instal·lació i Configuració ⚙️
+
+### Requisits Previs 📋
+- **Node.js i npm**: Instal·lats en el sistema.
+- **Base de dades MySQL**: Configurada i en execució.
+
+### Instal·lació de Dependències 📦
+Un cop clonat el repositori, executeu el següent comandament dins del directori del projecte per instal·lar les dependències necessàries:
+
+```bash
 npm install
-Configura les variables d'entorn al fitxer .env:
-text
-Wrap
-Copy
-DB_HOST=localhost
-DB_USER=teu_usuari
-DB_PASSWORD=teva_contrasenya
-DB_NAME=appplantes2
-JWT_SECRET=clau_secreta
-PORT=3000
-Executa l'API:
-bash
-Wrap
-Copy
-node app.js
-Accedeix a la documentació Swagger:
-🌐 http://localhost:3000/api-docs/
-🚀 Resultats
-API funcional a http://localhost:3000.
-Documentació interactiva amb Swagger.
-Proves realitzades amb Postman per validar endpoints.
-🔮 Treball Futur
-🔐 Afegir validacions més estrictes.
-☁️ Desplegar l'API al núvol (AWS, Azure, Heroku).
-📱 Crear un frontend per interactuar amb l'API.
-⚡ Optimitzar consultes SQL amb índexs i caching.
-🙏 Agraïments
-Gràcies al professor Jaume Camps pel suport i a les comunitats de codi obert que han fet possible aquest projecte.
-
-📎 Annexos
-Codi Font: GitHub
-Script BD: Disponible a la carpeta bd/.
-🌿 Fet amb passió per la programació i les plantes! 🌿
